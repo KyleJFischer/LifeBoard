@@ -71,3 +71,12 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: "site-build"
+
+      - name: Invalidate Cloud Front
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ steps.CloudFormationStep.outputs.cf_output_CloudFrontDistr }}
+          PATHS: "/index.html"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
