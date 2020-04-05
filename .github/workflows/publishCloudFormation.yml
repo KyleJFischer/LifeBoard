@@ -54,14 +54,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-      - name: Deploy Hosted Zone Stack
-        id: HostedZoneCloudFormation
-        uses: alexjurkiewicz/cfn-deploy@v2.0.1
-        with:
-          stackName: ${{ secrets.AWS_STACK_NAME }}
-          templateFile: "DeploymentTools/CloudFormation/WebsiteFormation/route53-zone.yaml"
-          parameters: DomainName=${{ secrets.DOMAIN_NAME }}
-
       - name: Deploy Main Stack
         id: CloudFormationStep
         uses: alexjurkiewicz/cfn-deploy@v2.0.1
