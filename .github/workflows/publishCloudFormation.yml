@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: Change to Right Directory
+        run: cd Website
       - name: Install dependencies
         run: npm install
       - name: Generate build
