@@ -55,7 +55,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy Hosted Zone Stack
-        id: CloudFormationStep
+        id: HostedZoneCloudFormation
         uses: alexjurkiewicz/cfn-deploy@v2.0.1
         with:
           stackName: ${{ secrets.AWS_STACK_NAME }}
