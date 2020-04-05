@@ -40,6 +40,24 @@ Resources:
             Principal: "*"
             Resource: !Sub "${S3BucketRoot.Arn}/*"
 
+  Route53RecordSetGroup:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: !Sub "${DomainName}."
+      RecordSets:
+        - Name: !Ref DomainName
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt CloudFrontDistribution.DomainName
+            EvaluateTargetHealth: false
+            HostedZoneId: Z2FDTNDATAQYW2
+        - Name: !Sub "www.${DomainName}"
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt CloudFrontDistribution.DomainName
+            EvaluateTargetHealth: false
+            HostedZoneId: Z2FDTNDATAQYW2
+
   CertificateManagerCertificate:
     Type: AWS::CertificateManager::Certificate
     Properties:
@@ -100,21 +118,3 @@ Resources:
           AcmCertificateArn: !Ref CertificateManagerCertificate
           MinimumProtocolVersion: TLSv1.1_2016
           SslSupportMethod: sni-only
-
-  Route53RecordSetGroup:
-    Type: AWS::Route53::RecordSetGroup
-    Properties:
-      HostedZoneName: !Sub "${DomainName}."
-      RecordSets:
-        - Name: !Ref DomainName
-          Type: A
-          AliasTarget:
-            DNSName: !GetAtt CloudFrontDistribution.DomainName
-            EvaluateTargetHealth: false
-            HostedZoneId: Z2FDTNDATAQYW2
-        - Name: !Sub "www.${DomainName}"
-          Type: A
-          AliasTarget:
-            DNSName: !GetAtt CloudFrontDistribution.DomainName
-            EvaluateTargetHealth: false
-            HostedZoneId: Z2FDTNDATAQYW2
