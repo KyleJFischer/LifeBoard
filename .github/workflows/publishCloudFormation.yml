@@ -25,7 +25,7 @@ jobs:
       - name: CloudFormation Deploy Action
         uses: MGenteluci/cloudformation-deploy-action@v1.3.0
         env:
-          TEMPLATE: "..\..\DeploymentTools\CloudFormation\MasterTemplate.yml"
+          TEMPLATE: "../../DeploymentTools/CloudFormation/MasterTemplate.yml"
           AWS_STACK_NAME: "LifeBoardStack"
           AWS_REGION: "us-east-2"
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
