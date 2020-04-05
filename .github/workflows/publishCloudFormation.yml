@@ -35,4 +35,4 @@ jobs:
         uses: alexjurkiewicz/cfn-deploy@v2.0.1
         with:
           stackName: "NewWayStack"
-          templateFile: "DeploymentTools\CloudFormation\MasterTemplate.yml"
+          templateFile: "DeploymentTools/CloudFormation/MasterTemplate.yml"
