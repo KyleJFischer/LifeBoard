@@ -36,15 +36,6 @@ Mappings:
     sa-east-1:
       S3HostedZoneId: Z31GFT0UA1I2HV
 Resources:
-  DNS:
-    Type: AWS::Route53::HostedZone
-    Properties:
-      HostedZoneConfig:
-        Comment: !Join ["", ["Hosted zone for ", !Ref "DomainName"]]
-      Name: !Ref "DomainName"
-      HostedZoneTags:
-        - Key: Application
-          Value: Blog
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
