@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 12.x
       - name: Change to Right Directory
-        run: ls
+        run: cd WebSite
       - name: Install dependencies
         run: npm install
       - name: Generate build
