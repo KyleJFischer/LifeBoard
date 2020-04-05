@@ -63,7 +63,7 @@ jobs:
         with:
           stackName: ${{ secrets.AWS_STACK_NAME }}
           templateFile: "DeploymentTools/CloudFormation/MasterTemplate.yml"
-          parameters: HostedZone=${{ secrets.HOSTED_ZONE }}
+          parameters: RootDomainName=${{ secrets.HOSTED_ZONE }}
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
