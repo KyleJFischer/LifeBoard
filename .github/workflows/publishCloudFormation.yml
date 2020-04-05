@@ -24,15 +24,15 @@ jobs:
           node-version: 12.x
       - name: Install dependencies
         run: npm  install
-        working-directory: WebSite
+        working-directory: site
       - name: Generate build
         run: npm run build # Share artifact inside workflow
-        working-directory: WebSite
+        working-directory: site
       - name: Share artifact inside workflow
         uses: actions/upload-artifact@v1
         with:
-          name: react-github-actions-build
-          path: WebSite/build
+          name: site-build
+          path: site/build
 
   DeploySite:
     needs: BuildWebSite
@@ -46,7 +46,7 @@ jobs:
       - name: Get artifact
         uses: actions/download-artifact@v1
         with:
-          name: react-github-actions-build
+          name: site-build
 
       - name: Load AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
