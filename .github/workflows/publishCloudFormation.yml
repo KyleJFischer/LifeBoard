@@ -60,7 +60,7 @@ jobs:
         with:
           stackName: ${{ secrets.AWS_STACK_NAME }}
           templateFile: "DeploymentTools/CloudFormation/WebsiteFormation/MasterTemplate.yml"
-          parameters: DomainName=${{ secrets.DOMAIN_NAME }} AcmCertificateArn=${{secrets.CERTIFICATE_ARN}} FullDomainName=${{secrets.FULL_DOMAIN_NAME}}
+          parameters: DomainName=${{ secrets.DOMAIN_NAME }} AcmCertificateArn=${{ secrets.CERTIFICATE_ARN }} FullDomainName=${{ secrets.FULL_DOMAIN_NAME }}
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
