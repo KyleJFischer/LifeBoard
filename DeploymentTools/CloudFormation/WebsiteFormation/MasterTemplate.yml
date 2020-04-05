@@ -44,7 +44,6 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: 404.html
-    DeletionPolicy: Retain
   WebsiteBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
