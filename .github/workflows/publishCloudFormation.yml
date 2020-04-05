@@ -23,16 +23,19 @@ jobs:
         with:
           node-version: 12.x
       - name: Change to Right Directory
-        run: cd WebSite
+        run: ls
+        working-directory: WebSite
       - name: Install dependencies
-        run: npm install
+        run: npm  install
+        working-directory: WebSite
       - name: Generate build
         run: npm run build # Share artifact inside workflow
+        working-directory: WebSite
       - name: Share artifact inside workflow
         uses: actions/upload-artifact@v1
         with:
           name: react-github-actions-build
-          path: build
+          path: WebSite/build
 
   DeploySite:
     needs: BuildWebSite
